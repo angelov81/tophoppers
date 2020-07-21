@@ -58,7 +58,7 @@ public class ProductEntity extends BaseEntity {
     this.expiresOn = expiresOn;
   }
 
-//  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne(cascade = CascadeType.ALL)
   public CategoryEntity getCategory() {
     return category;
   }
