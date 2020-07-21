@@ -1,3 +1,18 @@
+# IDEA
+/bin/
+/.gradle/
+/build/
+/out/
+/.settings/
+/.classpath
+/.project
+/.idea
+/*.iml
+/*.ipr
+/*.iws
+/.apt_generated/
+/test-output/
+
 # Compiled class file
 *.class
 
