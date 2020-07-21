@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: TOPHOP_01_01
+      author: Angel Angelov
+      changes:
+        - sqlFile:
+            dbms: mysql
+            encoding: utf8
+            endDelimiter: \n
+            path: tables.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

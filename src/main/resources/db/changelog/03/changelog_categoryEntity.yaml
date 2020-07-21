@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-category-table
+      author: Angel Angelov
+      changes:
+        - createTable:
+            tableName: categories
+            columns:
+              - column:
+                  name: id
+                  type: varchar(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: category_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: product_id
+                  type: varchar(255)
+        - addForeignKeyConstraint:
+            baseColumnNames: product_id
+            baseTableName: categories
+            constraintName: fk_product_category
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: products
+            validate: true

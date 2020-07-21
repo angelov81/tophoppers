@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-product-table
+      author: Angel Angelov
+      changes:
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: varchar(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: decimal
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_on
+                  type: datetime
+                  constraints:
+                    nullable: false
+        - createIndex:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+            indexName: idx_products_name
+            unique: true

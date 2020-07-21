@@ -1,4 +1,4 @@
-package bg.softuni.tophoppers.customers.model;
+package bg.softuni.tophoppers.domain.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

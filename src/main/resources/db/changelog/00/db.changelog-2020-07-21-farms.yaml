@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-farms-table
+      author: Angel Angelov
+      changes:
+        - createTable:
+            tableName: farms
+            columns:
+              - column:
+                  name: id
+                  type: varchar(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: farm_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: enabled
+                  type: boolean
+                  constraints:
+                    nullable: false
+        - createIndex:
+            tableName: farms
+            columns:
+              - column:
+                  name: email
+            indexName: idx_farmss_email
+            unique: true

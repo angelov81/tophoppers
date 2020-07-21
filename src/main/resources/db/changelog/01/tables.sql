@@ -1,0 +1,2 @@
+ALTER TABLE farms DROP COLUMN enabled
+ALTER TABLE farms ADD COLUMN is_enabled TINYINT(1)

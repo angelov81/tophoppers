@@ -1,3 +1,11 @@
 databaseChangeLog:
   - include:
-      file: db/changelog/db.changelog-2020-07-18-customers.yaml
+      file: db/changelog/00/db.changelog-2020-07-18-customers.yaml
+  - include:
+      file: db/changelog/00/db.changelog-2020-07-21-farms.yaml
+  - include:
+      file: db/changelog/01/changelog.yaml
+  - include:
+      file: db/changelog/02/changelog_productEntity.yaml
+  - include:
+      file: db/changelog/03/changelog_categoryEntity.yaml
