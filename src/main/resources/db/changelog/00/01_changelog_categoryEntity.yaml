@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: add-product-table
+      id: add-category-table
       author: Angel Angelov
       changes:
         - createTable:
-            tableName: products
+            tableName: categories
             columns:
               - column:
                   name: id
@@ -13,7 +13,7 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: name
+                  name: category_name
                   type: varchar(255)
                   constraints:
                     nullable: false
@@ -22,20 +22,10 @@ databaseChangeLog:
                   type: text
                   constraints:
                     nullable: false
-              - column:
-                  name: price
-                  type: decimal
-                  constraints:
-                    nullable: false
-              - column:
-                  name: expires_on
-                  type: datetime
-                  constraints:
-                    nullable: false
         - createIndex:
-            tableName: products
+            tableName: categories
             columns:
               - column:
-                  name: name
-            indexName: idx_products_name
+                  name: category_name
+            indexName: idx_category_category_name
             unique: true

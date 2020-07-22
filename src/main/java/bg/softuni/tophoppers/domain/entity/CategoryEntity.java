@@ -1,6 +1,7 @@
 package bg.softuni.tophoppers.domain.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "categories")
@@ -8,6 +9,7 @@ public class CategoryEntity extends BaseEntity {
 
   private CategoryName categoryName;
   private String description;
+  private Set<ProductEntity> products;
 
   public CategoryEntity() {
   }
@@ -33,5 +35,14 @@ public class CategoryEntity extends BaseEntity {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+  public Set<ProductEntity> getProducts() {
+    return products;
+  }
+
+  public void setProducts(Set<ProductEntity> products) {
+    this.products = products;
   }
 }
