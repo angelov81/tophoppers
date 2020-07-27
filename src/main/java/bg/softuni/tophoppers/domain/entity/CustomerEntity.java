@@ -2,6 +2,7 @@ package bg.softuni.tophoppers.domain.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -15,6 +16,7 @@ public class CustomerEntity extends BaseEntity {
   private String email;
   private String address;
   private String password;
+  private RoleEntity role;
 
   public CustomerEntity() {
   }
@@ -77,5 +79,14 @@ public class CustomerEntity extends BaseEntity {
 
   public void setPassword(String password) {
     this.password = password;
+  }
+
+  @ManyToOne
+  public RoleEntity getRole() {
+    return role;
+  }
+
+  public void setRole(RoleEntity role) {
+    this.role = role;
   }
 }

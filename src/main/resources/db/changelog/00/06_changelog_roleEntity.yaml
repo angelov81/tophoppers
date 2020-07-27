@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-roles-table
+      author: Angel Angelov
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: varchar(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+        - createIndex:
+            tableName: roles
+            columns:
+              - column:
+                  name: name
+            indexName: idx_roles_name
+            unique: true

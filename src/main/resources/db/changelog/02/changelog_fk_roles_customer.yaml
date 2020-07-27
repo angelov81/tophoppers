@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-fk-roles-customer
+      author: Angel Angelov
+      changes:
+        - addColumn:
+            tableName: customers
+            columns:
+              - column:
+                  name: role_id
+                  type: varchar(255)
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: customers
+            constraintName: fk_roles_customer
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: roles
+            validate: true

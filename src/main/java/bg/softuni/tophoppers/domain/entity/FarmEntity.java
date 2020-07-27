@@ -14,6 +14,7 @@ public class FarmEntity extends BaseEntity {
   private String email;
   private boolean isEnabled;
   private Set<ProductEntity> products;
+  private Set<CommentEntity> comments;
 
   public FarmEntity() {
   }
@@ -66,5 +67,14 @@ public class FarmEntity extends BaseEntity {
 
   public void setProducts(Set<ProductEntity> products) {
     this.products = products;
+  }
+
+  @OneToMany(mappedBy = "farm")
+  public Set<CommentEntity> getComments() {
+    return comments;
+  }
+
+  public void setComments(Set<CommentEntity> comments) {
+    this.comments = comments;
   }
 }

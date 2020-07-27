@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
@@ -17,6 +18,7 @@ public class ProductEntity extends BaseEntity {
   private LocalDateTime expiresOn;
   private CategoryEntity category;
   private FarmEntity farm;
+  private Set<CommentEntity> comments;
 
   public ProductEntity() {
   }
@@ -75,5 +77,14 @@ public class ProductEntity extends BaseEntity {
 
   public void setFarm(FarmEntity farm) {
     this.farm = farm;
+  }
+
+  @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+  public Set<CommentEntity> getComments() {
+    return comments;
+  }
+
+  public void setComments(Set<CommentEntity> comments) {
+    this.comments = comments;
   }
 }

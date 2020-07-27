@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-comments-table
+      author: Angel Angelov
+      changes:
+        - createTable:
+            tableName: comments
+            columns:
+              - column:
+                  name: id
+                  type: varchar(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: rate
+                  type: int(11)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: content
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: product_id
+                  type: varchar(255)
+              - column:
+                  name: farm_id
+                  type: varchar(255)
+        - createIndex:
+            tableName: comments
+            columns:
+              - column:
+                  name: rate
+            indexName: idx_comments_rate
+            unique: true
+        - addForeignKeyConstraint:
+            baseColumnNames: product_id
+            baseTableName: comments
+            constraintName: fk_comments_product
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: products
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: farm_id
+            baseTableName: comments
+            constraintName: fk_comments_farm
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: farms
+            validate: true
