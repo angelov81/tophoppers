@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-fk-product-farm
+      author: Angel Angelov
+      changes:
+        - addColumn:
+            tableName: products
+            columns:
+              - column:
+                  name: farm_id
+                  type: varchar(255)
+        - addForeignKeyConstraint:
+            baseColumnNames: farm_id
+            baseTableName: products
+            constraintName: fk_products_farm
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: farms
+            validate: true

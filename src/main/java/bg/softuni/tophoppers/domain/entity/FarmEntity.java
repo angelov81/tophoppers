@@ -1,10 +1,9 @@
 package bg.softuni.tophoppers.domain.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
 @Table(name = "farms")
@@ -14,6 +13,7 @@ public class FarmEntity extends BaseEntity {
   private String address;
   private String email;
   private boolean isEnabled;
+  private Set<ProductEntity> products;
 
   public FarmEntity() {
   }
@@ -57,5 +57,14 @@ public class FarmEntity extends BaseEntity {
 
   public void setEnabled(boolean enabled) {
     this.isEnabled = enabled;
+  }
+
+  @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL)
+  public Set<ProductEntity> getProducts() {
+    return products;
+  }
+
+  public void setProducts(Set<ProductEntity> products) {
+    this.products = products;
   }
 }

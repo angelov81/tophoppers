@@ -16,6 +16,7 @@ public class ProductEntity extends BaseEntity {
   private BigDecimal price;
   private LocalDateTime expiresOn;
   private CategoryEntity category;
+  private FarmEntity farm;
 
   public ProductEntity() {
   }
@@ -65,5 +66,14 @@ public class ProductEntity extends BaseEntity {
 
   public void setCategory(CategoryEntity category) {
     this.category = category;
+  }
+
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  public FarmEntity getFarm() {
+    return farm;
+  }
+
+  public void setFarm(FarmEntity farm) {
+    this.farm = farm;
   }
 }

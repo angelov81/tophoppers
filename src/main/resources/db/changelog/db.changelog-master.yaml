@@ -7,5 +7,5 @@ databaseChangeLog:
       file: db/changelog/00/03_changelog_customerEntity.yaml
   - include:
       file: db/changelog/00/04_changelog_farmEntity.yaml
-#  - include:
-#      file: db/changelog/01/changelog.yaml
+  - include:
+      file: db/changelog/01/changelog_fk_product_farm.yaml
