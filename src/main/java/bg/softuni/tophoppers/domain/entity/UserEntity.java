@@ -7,8 +7,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "customers")
-public class CustomerEntity extends BaseEntity {
+@Table(name = "users")
+public class UserEntity extends BaseEntity {
 
   private String firstName;
   private String lastName;
@@ -18,7 +18,7 @@ public class CustomerEntity extends BaseEntity {
   private String password;
   private RoleEntity role;
 
-  public CustomerEntity() {
+  public UserEntity() {
   }
 
   @NotNull

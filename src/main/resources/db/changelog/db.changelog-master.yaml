@@ -4,7 +4,7 @@ databaseChangeLog:
   - include:
       file: db/changelog/00/02_changelog_productEntity.yaml
   - include:
-      file: db/changelog/00/03_changelog_customerEntity.yaml
+      file: db/changelog/00/03_changelog_userEntity.yaml
   - include:
       file: db/changelog/00/04_changelog_farmEntity.yaml
   - include:

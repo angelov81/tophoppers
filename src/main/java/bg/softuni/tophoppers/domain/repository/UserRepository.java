@@ -1,14 +1,14 @@
 package bg.softuni.tophoppers.domain.repository;
 
-import bg.softuni.tophoppers.domain.entity.CustomerEntity;
+import bg.softuni.tophoppers.domain.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<CustomerEntity, String> {
+public interface UserRepository extends JpaRepository<UserEntity, String> {
 
-  Optional<CustomerEntity> findByEmail(String email);
+  Optional<UserEntity> findByEmail(String email);
 
 }

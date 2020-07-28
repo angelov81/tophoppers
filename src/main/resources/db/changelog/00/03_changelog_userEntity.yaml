@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: add-customers-table
+      id: add-users-table
       author: Angel Angelov
       changes:
         - createTable:
-            tableName: customers
+            tableName: users
             columns:
               - column:
                   name: id
@@ -42,9 +42,9 @@ databaseChangeLog:
                   name: password
                   type: varchar(255)
         - createIndex:
-            tableName: customers
+            tableName: users
             columns:
               - column:
                   name: email
-            indexName: idx_customers_email
+            indexName: idx_users_email
             unique: true
