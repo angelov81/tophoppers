@@ -1,5 +1,7 @@
 package bg.softuni.tophoppers.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -61,6 +63,7 @@ public class FarmEntity extends BaseEntity {
   }
 
   @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JsonBackReference
   public Set<ProductEntity> getProducts() {
     return products;
   }

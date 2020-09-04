@@ -1,5 +1,6 @@
 package bg.softuni.tophoppers.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -62,6 +63,7 @@ public class ProductEntity extends BaseEntity {
   }
 
   @ManyToOne
+  @JsonManagedReference
   public CategoryEntity getCategory() {
     return category;
   }
@@ -71,6 +73,7 @@ public class ProductEntity extends BaseEntity {
   }
 
   @ManyToOne
+  @JsonManagedReference
   public FarmEntity getFarm() {
     return farm;
   }
@@ -79,7 +82,7 @@ public class ProductEntity extends BaseEntity {
     this.farm = farm;
   }
 
-  @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
   public Set<CommentEntity> getComments() {
     return comments;
   }
@@ -87,4 +90,5 @@ public class ProductEntity extends BaseEntity {
   public void setComments(Set<CommentEntity> comments) {
     this.comments = comments;
   }
+
 }

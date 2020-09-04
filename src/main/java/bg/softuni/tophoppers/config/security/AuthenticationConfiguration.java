@@ -1,4 +1,4 @@
-package bg.softuni.tophoppers.config;
+package bg.softuni.tophoppers.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

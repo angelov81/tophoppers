@@ -3,15 +3,15 @@ package bg.softuni.tophoppers.web.controller;
 import bg.softuni.tophoppers.domain.entity.ProductEntity;
 import bg.softuni.tophoppers.domain.service.ProductService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class ProductsController implements ProductsNamespace {
+@RequestMapping("/products")
+public class ProductsController {
 
   private final ProductService productService;
 
@@ -31,6 +31,19 @@ public class ProductsController implements ProductsNamespace {
     return theProduct.map(ResponseEntity::ok)
         .orElseGet(() -> ResponseEntity.notFound().build());
   }
+
+//  @PostMapping
+//  public ResponseEntity<ProductEntity> create(UriComponentsBuilder uriComponentsBuilder,
+//                                              @RequestBody ProductEntity productEntity) {
+//    ProductEntity newProduct = this.productService.save();
+//    return ResponseEntity
+//        .created(uriComponentsBuilder
+//            .path("/products/{productId}")
+//            .buildAndExpand(newProduct.getId())
+//            .toUri())
+//        .build();
+//  }
+
 
 
 }
