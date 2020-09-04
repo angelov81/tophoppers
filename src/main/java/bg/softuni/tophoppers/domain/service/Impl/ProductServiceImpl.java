@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -53,6 +54,11 @@ public class ProductServiceImpl implements ProductService {
   @Override
   public List<ProductEntity> getAllProductsByCategory(CategoryEntity categoryEntity) {
     return this.productRepository.findAllByCategory(categoryEntity);
+  }
+
+  @Override
+  public Optional<ProductEntity> getProductById(String id) {
+    return this.productRepository.findById(id);
   }
 
 }

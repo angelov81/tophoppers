@@ -6,6 +6,7 @@ import bg.softuni.tophoppers.domain.entity.ProductEntity;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductService {
 
@@ -15,5 +16,7 @@ public interface ProductService {
   List<ProductEntity> getAllProducts();
 
   List<ProductEntity> getAllProductsByCategory(CategoryEntity categoryEntity);
+
+  Optional<ProductEntity> getProductById(String id);
 
 }
