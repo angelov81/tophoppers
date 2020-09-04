@@ -37,7 +37,7 @@ public class CategoryEntity extends BaseEntity {
     this.description = description;
   }
 
-  @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   public Set<ProductEntity> getProducts() {
     return products;
   }
