@@ -23,11 +23,10 @@ public class CategoryServiceImpl implements CategoryService {
   @Override
   public void initCategories() {
     if (categoryRepository.count() == 0) {
-      Arrays.stream(CategoryName.values()).forEach(categoryName -> {
-        this.categoryRepository
-            .save(new CategoryEntity(categoryName,
-                String.format("Description for %s", categoryName.name())));
-      });
+      Arrays.stream(CategoryName.values())
+          .forEach(categoryName -> this.categoryRepository
+              .save(new CategoryEntity(
+                  categoryName, String.format("Description for %s", categoryName.name()))));
     }
   }
 

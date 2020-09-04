@@ -11,4 +11,5 @@ public interface FarmRepository extends JpaRepository<FarmEntity, String> {
 
   Optional<FarmEntity> findByEmail(String email);
 
+  FarmEntity findByName(String name);
 }

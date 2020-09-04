@@ -61,7 +61,7 @@ public class ProductEntity extends BaseEntity {
     this.expiresOn = expiresOn;
   }
 
-  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @ManyToOne
   public CategoryEntity getCategory() {
     return category;
   }
@@ -70,7 +70,7 @@ public class ProductEntity extends BaseEntity {
     this.category = category;
   }
 
-  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @ManyToOne
   public FarmEntity getFarm() {
     return farm;
   }

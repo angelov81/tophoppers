@@ -60,7 +60,7 @@ public class FarmEntity extends BaseEntity {
     this.isEnabled = enabled;
   }
 
-  @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   public Set<ProductEntity> getProducts() {
     return products;
   }
@@ -69,7 +69,7 @@ public class FarmEntity extends BaseEntity {
     this.products = products;
   }
 
-  @OneToMany(mappedBy = "farm")
+  @OneToMany(mappedBy = "farm", fetch = FetchType.EAGER)
   public Set<CommentEntity> getComments() {
     return comments;
   }
