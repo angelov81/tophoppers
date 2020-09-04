@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: "jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/tophoppers?serverTimezone=UTC&characterEncoding=UTF-8&sslMode=DISABLED&createDatabaseIfNotExist=true"
-    username: "${DB_USER:root}"
-    password: "${DB_PASSWORD:1q2w3e}"
+    username: "${DB_USER}"
+    password: "${DB_PASSWORD}"
     continueOnError: true
     driver-class-name: "com.mysql.cj.jdbc.Driver"
     hikari:
