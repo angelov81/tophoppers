@@ -61,4 +61,10 @@ public class ProductServiceImpl implements ProductService {
     return this.productRepository.findById(id);
   }
 
+  @Override
+  public ProductEntity save(ProductEntity product) {
+    return this.productRepository.save(product);
+  }
+
+
 }

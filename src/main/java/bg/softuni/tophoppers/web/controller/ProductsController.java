@@ -32,17 +32,18 @@ public class ProductsController {
         .orElseGet(() -> ResponseEntity.notFound().build());
   }
 
-//  @PostMapping
-//  public ResponseEntity<ProductEntity> create(UriComponentsBuilder uriComponentsBuilder,
-//                                              @RequestBody ProductEntity productEntity) {
-//    ProductEntity newProduct = this.productService.save();
-//    return ResponseEntity
-//        .created(uriComponentsBuilder
-//            .path("/products/{productId}")
-//            .buildAndExpand(newProduct.getId())
-//            .toUri())
-//        .build();
-//  }
+  // TODO: Change @RequestBody ProductEntity with a DTO class
+  @PostMapping
+  public ResponseEntity<ProductEntity> create(UriComponentsBuilder uriComponentsBuilder,
+                                              @RequestBody ProductEntity productEntity) {
+    ProductEntity newProduct = this.productService.save(productEntity);
+    return ResponseEntity
+        .created(uriComponentsBuilder
+            .path("/products/{productId}")
+            .buildAndExpand(newProduct.getId())
+            .toUri())
+        .build();
+  }
 
 
 

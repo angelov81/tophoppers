@@ -19,4 +19,5 @@ public interface ProductService {
 
   Optional<ProductEntity> getProductById(String id);
 
+  ProductEntity save(ProductEntity product);
 }
