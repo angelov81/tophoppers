@@ -8,6 +8,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -34,6 +36,16 @@ public class CategoryServiceImpl implements CategoryService {
   public CategoryEntity find(CategoryName categoryName) {
     return this.categoryRepository
         .findByCategoryName(categoryName).orElse(null);
+  }
+
+  @Override
+  public List<CategoryEntity> getAllCategories() {
+    return this.categoryRepository.findAll();
+  }
+
+  @Override
+  public Optional<CategoryEntity> getCategoryById(String categoryId) {
+    return this.categoryRepository.findById(categoryId);
   }
 
 

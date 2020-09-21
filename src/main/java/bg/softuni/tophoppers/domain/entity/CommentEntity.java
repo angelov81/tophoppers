@@ -1,5 +1,7 @@
 package bg.softuni.tophoppers.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -35,6 +37,7 @@ public class CommentEntity extends BaseEntity {
     this.content = content;
   }
 
+  @JsonIgnore
   @ManyToOne
   public ProductEntity getProduct() {
     return product;
@@ -44,6 +47,7 @@ public class CommentEntity extends BaseEntity {
     this.product = product;
   }
 
+  @JsonIgnore
   @ManyToOne
   public FarmEntity getFarm() {
     return farm;

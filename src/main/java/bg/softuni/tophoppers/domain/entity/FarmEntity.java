@@ -1,6 +1,6 @@
 package bg.softuni.tophoppers.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -62,8 +62,8 @@ public class FarmEntity extends BaseEntity {
     this.isEnabled = enabled;
   }
 
+  @JsonIgnore
   @OneToMany(mappedBy = "farm", fetch = FetchType.EAGER)
-  @JsonManagedReference(value = "farmProducts")
   public Set<ProductEntity> getProducts() {
     return products;
   }
@@ -72,6 +72,7 @@ public class FarmEntity extends BaseEntity {
     this.products = products;
   }
 
+  @JsonIgnore
   @OneToMany(mappedBy = "farm", fetch = FetchType.EAGER)
   public Set<CommentEntity> getComments() {
     return comments;

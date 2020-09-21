@@ -1,12 +1,13 @@
 package bg.softuni.tophoppers.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "categories")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = String.class)
 public class CategoryEntity extends BaseEntity {
 
   private CategoryName categoryName;
@@ -39,8 +40,8 @@ public class CategoryEntity extends BaseEntity {
     this.description = description;
   }
 
+  @JsonIgnore
   @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
-  @JsonManagedReference(value = "categoryProducts")
   public Set<ProductEntity> getProducts() {
     return products;
   }

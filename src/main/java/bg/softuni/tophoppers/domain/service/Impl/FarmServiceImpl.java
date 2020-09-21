@@ -24,6 +24,7 @@ public class FarmServiceImpl implements FarmService {
       farm.setName("Default");
       farm.setAddress("Local");
       farm.setEmail("info@tophoppers.com");
+      farm.setEnabled(true);
       this.farmRepository.save(farm);
     }
   }

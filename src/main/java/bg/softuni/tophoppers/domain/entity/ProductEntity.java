@@ -1,6 +1,6 @@
 package bg.softuni.tophoppers.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -62,8 +62,8 @@ public class ProductEntity extends BaseEntity {
     this.expiresOn = expiresOn;
   }
 
+  @JsonIgnore
   @ManyToOne
-  @JsonBackReference(value = "categoryProducts")
   public CategoryEntity getCategory() {
     return category;
   }
@@ -72,8 +72,8 @@ public class ProductEntity extends BaseEntity {
     this.category = category;
   }
 
+  @JsonIgnore
   @ManyToOne
-  @JsonBackReference(value = "farmProducts")
   public FarmEntity getFarm() {
     return farm;
   }
@@ -82,6 +82,7 @@ public class ProductEntity extends BaseEntity {
     this.farm = farm;
   }
 
+  @JsonIgnore
   @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
   public Set<CommentEntity> getComments() {
     return comments;
