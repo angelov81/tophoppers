@@ -1,5 +1,7 @@
 package bg.softuni.tophoppers.web.controller;
 
+import bg.softuni.tophoppers.domain.entity.CategoryEntity;
+import bg.softuni.tophoppers.domain.entity.FarmEntity;
 import bg.softuni.tophoppers.domain.entity.ProductEntity;
 import bg.softuni.tophoppers.domain.service.ProductService;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,26 @@ public class ProductsController {
     Optional<ProductEntity> theProduct = this.productService.getProductById(productId);
 
     return theProduct.map(ResponseEntity::ok)
+        .orElseGet(() -> ResponseEntity.notFound().build());
+  }
+
+  @GetMapping("/{productId}/farm")
+  public ResponseEntity<FarmEntity> getFarmByProduct(@PathVariable String productId) {
+    Optional<ProductEntity> theProduct = this.productService.getProductById(productId);
+
+    return theProduct
+        .map(ProductEntity::getFarm)
+        .map(ResponseEntity::ok)
+        .orElseGet(() -> ResponseEntity.notFound().build());
+  }
+
+  @GetMapping("{productId}/category")
+  public ResponseEntity<CategoryEntity> getCategoryByProduct(@PathVariable String productId) {
+    Optional<ProductEntity> theProduct = this.productService.getProductById(productId);
+
+    return theProduct
+        .map(ProductEntity::getCategory)
+        .map(ResponseEntity::ok)
         .orElseGet(() -> ResponseEntity.notFound().build());
   }
 

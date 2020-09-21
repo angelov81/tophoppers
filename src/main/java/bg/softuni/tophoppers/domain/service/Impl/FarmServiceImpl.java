@@ -5,6 +5,9 @@ import bg.softuni.tophoppers.domain.repository.FarmRepository;
 import bg.softuni.tophoppers.domain.service.FarmService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class FarmServiceImpl implements FarmService {
 
@@ -28,5 +31,15 @@ public class FarmServiceImpl implements FarmService {
   @Override
   public FarmEntity getFarm(String name) {
     return this.farmRepository.findByName(name);
+  }
+
+  @Override
+  public List<FarmEntity> getAllFarms() {
+    return this.farmRepository.findAll();
+  }
+
+  @Override
+  public Optional<FarmEntity> getFarmById(String farmId) {
+    return this.farmRepository.findById(farmId);
   }
 }
