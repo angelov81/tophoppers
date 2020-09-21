@@ -7,7 +7,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "categories")
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = String.class)
 public class CategoryEntity extends BaseEntity {
 
   private CategoryName categoryName;
