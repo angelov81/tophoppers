@@ -45,6 +45,13 @@ public class ProductsController {
         .build();
   }
 
+  @DeleteMapping("/{productId}")
+  public ResponseEntity<ProductEntity> delete(@PathVariable String productId) {
+    this.productService.delete(productId);
+
+    return ResponseEntity.noContent().build();
+  }
+
 
 
 }
