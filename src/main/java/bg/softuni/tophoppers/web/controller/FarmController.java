@@ -1,6 +1,7 @@
 package bg.softuni.tophoppers.web.controller;
 
 import bg.softuni.tophoppers.domain.entity.FarmEntity;
+import bg.softuni.tophoppers.domain.entity.ProductEntity;
 import bg.softuni.tophoppers.domain.service.FarmService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/farms")
@@ -31,6 +33,16 @@ public class FarmController {
     Optional<FarmEntity> theFarm = this.farmService.getFarmById(farmId);
 
     return theFarm.map(ResponseEntity::ok)
+        .orElseGet(() -> ResponseEntity.notFound().build());
+  }
+
+  @GetMapping("/{farmId}/products")
+  public ResponseEntity<Set<ProductEntity>> getFarmProducts(@PathVariable String farmId) {
+    Optional<FarmEntity> theFarm = this.farmService.getFarmById(farmId);
+
+    return theFarm
+        .map(FarmEntity::getProducts)
+        .map(ResponseEntity::ok)
         .orElseGet(() -> ResponseEntity.notFound().build());
   }
 
