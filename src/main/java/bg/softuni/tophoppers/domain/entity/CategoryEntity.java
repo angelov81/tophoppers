@@ -1,6 +1,6 @@
 package bg.softuni.tophoppers.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -39,8 +39,8 @@ public class CategoryEntity extends BaseEntity {
     this.description = description;
   }
 
-  @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-  @JsonBackReference
+  @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+  @JsonManagedReference(value = "categoryProducts")
   public Set<ProductEntity> getProducts() {
     return products;
   }

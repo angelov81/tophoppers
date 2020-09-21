@@ -1,6 +1,6 @@
 package bg.softuni.tophoppers.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -62,8 +62,8 @@ public class FarmEntity extends BaseEntity {
     this.isEnabled = enabled;
   }
 
-  @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-  @JsonBackReference
+  @OneToMany(mappedBy = "farm", fetch = FetchType.EAGER)
+  @JsonManagedReference(value = "farmProducts")
   public Set<ProductEntity> getProducts() {
     return products;
   }

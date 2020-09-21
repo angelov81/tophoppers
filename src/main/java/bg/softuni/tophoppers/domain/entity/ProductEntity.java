@@ -1,6 +1,6 @@
 package bg.softuni.tophoppers.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -63,7 +63,7 @@ public class ProductEntity extends BaseEntity {
   }
 
   @ManyToOne
-  @JsonManagedReference
+  @JsonBackReference(value = "categoryProducts")
   public CategoryEntity getCategory() {
     return category;
   }
@@ -73,7 +73,7 @@ public class ProductEntity extends BaseEntity {
   }
 
   @ManyToOne
-  @JsonManagedReference
+  @JsonBackReference(value = "farmProducts")
   public FarmEntity getFarm() {
     return farm;
   }

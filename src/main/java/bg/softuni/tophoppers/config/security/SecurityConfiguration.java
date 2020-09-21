@@ -21,8 +21,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity httpSecurity) throws Exception {
     httpSecurity
         .authorizeRequests()
-        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+//        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
         .antMatchers("/products**").permitAll();
+
+    // Temp solution until login is implemented, TODO: delete me
+    httpSecurity.csrf().disable();
+    httpSecurity.headers().frameOptions().disable();
+
   }
 
 }
