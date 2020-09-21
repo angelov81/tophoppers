@@ -1,5 +1,6 @@
 package bg.softuni.tophoppers.web.controller;
 
+import bg.softuni.tophoppers.domain.entity.CategoryEntity;
 import bg.softuni.tophoppers.domain.entity.FarmEntity;
 import bg.softuni.tophoppers.domain.entity.ProductEntity;
 import bg.softuni.tophoppers.domain.service.FarmService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/farms")
@@ -42,6 +44,21 @@ public class FarmController {
 
     return theFarm
         .map(FarmEntity::getProducts)
+        .map(ResponseEntity::ok)
+        .orElseGet(() -> ResponseEntity.notFound().build());
+  }
+
+  // TODO: Fix me !!!
+  @GetMapping("/{farmId}/products/{categoryId}")
+  public ResponseEntity<Set<ProductEntity>> getFarmProductsByCategory(@PathVariable String farmId,
+                                                                      @PathVariable String categoryId) {
+    Optional<FarmEntity> theFarm = this.farmService.getFarmById(farmId);
+
+    return theFarm.map(f ->
+        f.getProducts().stream()
+            .filter(p ->
+                p.getCategory().getCategoryName().equals(categoryId))
+            .collect(Collectors.toSet()))
         .map(ResponseEntity::ok)
         .orElseGet(() -> ResponseEntity.notFound().build());
   }
