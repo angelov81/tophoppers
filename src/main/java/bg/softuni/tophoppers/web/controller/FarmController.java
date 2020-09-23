@@ -1,9 +1,9 @@
 package bg.softuni.tophoppers.web.controller;
 
-import bg.softuni.tophoppers.domain.entity.CategoryEntity;
 import bg.softuni.tophoppers.domain.entity.FarmEntity;
 import bg.softuni.tophoppers.domain.entity.ProductEntity;
 import bg.softuni.tophoppers.domain.service.FarmService;
+import bg.softuni.tophoppers.domain.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,16 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/farms")
 public class FarmController {
 
   private final FarmService farmService;
+  private final ProductService productService;
 
-  public FarmController(FarmService farmService) {
+  public FarmController(FarmService farmService, ProductService productService) {
     this.farmService = farmService;
+    this.productService = productService;
   }
 
   @GetMapping
@@ -48,17 +49,13 @@ public class FarmController {
         .orElseGet(() -> ResponseEntity.notFound().build());
   }
 
-  // TODO: Fix me !!!
-  @GetMapping("/{farmId}/products/{categoryId}")
-  public ResponseEntity<Set<ProductEntity>> getFarmProductsByCategory(@PathVariable String farmId,
-                                                                      @PathVariable String categoryId) {
-    Optional<FarmEntity> theFarm = this.farmService.getFarmById(farmId);
+  @GetMapping("/{farmId}/products/{productId}")
+  public ResponseEntity<ProductEntity> getFarmProduct(@PathVariable String farmId,
+                                                      @PathVariable String productId) {
+    Optional<ProductEntity> theProduct = this.productService.getProductById(productId);
 
-    return theFarm.map(f ->
-        f.getProducts().stream()
-            .filter(p ->
-                p.getCategory().getCategoryName().equals(categoryId))
-            .collect(Collectors.toSet()))
+    return theProduct
+        .filter(p -> p.getFarm().getId().equals(farmId))
         .map(ResponseEntity::ok)
         .orElseGet(() -> ResponseEntity.notFound().build());
   }
