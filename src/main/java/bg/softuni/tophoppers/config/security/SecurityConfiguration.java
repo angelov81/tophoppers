@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-  final PasswordEncoder passwordEncoder;
+  private final PasswordEncoder passwordEncoder;
 
   public SecurityConfiguration(PasswordEncoder passwordEncoder) {
     this.passwordEncoder = passwordEncoder;
@@ -19,6 +19,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth
         .inMemoryAuthentication()
+        .passwordEncoder(passwordEncoder)
         .withUser("user")
         .password(passwordEncoder.encode("pass")).roles("USER")
         .and()
