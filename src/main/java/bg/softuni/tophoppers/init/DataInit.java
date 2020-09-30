@@ -3,6 +3,7 @@ package bg.softuni.tophoppers.init;
 import bg.softuni.tophoppers.domain.service.CategoryService;
 import bg.softuni.tophoppers.domain.service.FarmService;
 import bg.softuni.tophoppers.domain.service.ProductService;
+import bg.softuni.tophoppers.domain.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -15,15 +16,18 @@ public class DataInit implements CommandLineRunner {
   private final FarmService farmService;
   private final CategoryService categoryService;
   private final ProductService productService;
+  private final UserService userService;
 
-  public DataInit(FarmService farmService, CategoryService categoryService, ProductService productService) {
+  public DataInit(FarmService farmService, CategoryService categoryService, ProductService productService, UserService userService) {
     this.farmService = farmService;
     this.categoryService = categoryService;
     this.productService = productService;
+    this.userService = userService;
   }
 
   @Override
   public void run(String... args) {
+    this.userService.initDefaultSecurityRoles();
     this.farmService.initDefaultFarm();
     this.categoryService.initCategories();
     initMeat();

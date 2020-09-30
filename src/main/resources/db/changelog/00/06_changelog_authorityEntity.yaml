@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-authorities-table
+      author: Angel Angelov
+      changes:
+        - createTable:
+            tableName: authorities
+            columns:
+              - column:
+                  name: id
+                  type: varchar(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: varchar(255)
+#        - createIndex:
+#            tableName: authorities
+#            columns:
+#              - column:
+#                  name: name
+#            indexName: idx_authorities_name
+#            unique: true
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: authorities
+            constraintName: fk_authorities_users
+#            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
