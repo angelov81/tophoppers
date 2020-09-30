@@ -13,5 +13,3 @@ databaseChangeLog:
       file: db/changelog/00/06_changelog_roleEntity.yaml
   - include:
       file: db/changelog/01/changelog_fk_product_farm.yaml
-  - include:
-      file: db/changelog/02/changelog_fk_roles_customer.yaml

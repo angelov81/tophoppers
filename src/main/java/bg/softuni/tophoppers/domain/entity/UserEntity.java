@@ -16,7 +16,6 @@ public class UserEntity extends BaseEntity {
   private String email;
   private String address;
   private String password;
-  private RoleEntity role;
 
   public UserEntity() {
   }
@@ -81,12 +80,4 @@ public class UserEntity extends BaseEntity {
     this.password = password;
   }
 
-  @ManyToOne
-  public RoleEntity getRole() {
-    return role;
-  }
-
-  public void setRole(RoleEntity role) {
-    this.role = role;
-  }
 }
