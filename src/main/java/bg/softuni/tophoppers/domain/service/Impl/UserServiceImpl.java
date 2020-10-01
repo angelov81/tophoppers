@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     if (this.userRepository.count() == 0) {
       UserEntity user = new UserEntity();
       user.setUsername("user");
-      user.setPassword(passwordEncoder.encode("pass"));
+      user.setPassword(passwordEncoder.encode("user"));
       user.setEmail("user@example.com");
       user.setAddress("Local");
       user.setAge(39);
