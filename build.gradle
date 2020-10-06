@@ -6,10 +6,40 @@ plugins {
 
 group = 'bg.softuni'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
 
 repositories {
     mavenCentral()
+}
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
+
+ext {
+    mysqlConnectorVersion = "8.0.21"
+    mapStructVersion = "1.4.0.Final"
+    webjarsLocatorVersion = '0.40'
+    jQueryVersion = '3.5.1'
+    popperJsVersion = '2.0.2'
+    bootstrapVersion = '4.5.0'
+}
+
+dependencyManagement {
+    dependencies {
+        dependencySet(group:'org.mapstruct', version: "${mapStructVersion}") {
+            entry 'mapstruct'
+            entry 'mapstruct-processor'
+        }
+         dependency "mysql:mysql-connector-java:${mysqlConnectorVersion}"
+    }
 }
 
 dependencies {
@@ -23,10 +53,19 @@ dependencies {
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 
     implementation 'org.liquibase:liquibase-core'
+
     implementation('org.modelmapper:modelmapper:2.3.0')
 
     implementation "io.springfox:springfox-swagger2:2.9.2"
     implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+
+    compileOnly "org.webjars:webjars-locator:${webjarsLocatorVersion}"
+    compileOnly "org.webjars:jquery:${jQueryVersion}"
+    compileOnly "org.webjars:popper.js:${popperJsVersion}"
+    compileOnly "org.webjars:bootstrap:${bootstrapVersion}"
+
+    implementation "org.mapstruct:mapstruct"
+    annotationProcessor "org.mapstruct:mapstruct-processor"
 
 //    compile group: 'org.apache.olingo', name: 'odata-server-api', version: '4.7.1'
 //    compile group: 'org.apache.olingo', name: 'odata-server-core', version: '4.7.1'
@@ -40,6 +79,8 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+//	testImplementation 'org.mockito:mockito-core:2.27.0'
+//	testImplementation 'org.mockito:mockito-junit-jupiter:2.27.0'
     testImplementation 'org.springframework.security:spring-security-test'
 }
 
