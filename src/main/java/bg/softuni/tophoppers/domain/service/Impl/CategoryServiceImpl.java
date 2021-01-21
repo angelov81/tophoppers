@@ -27,15 +27,15 @@ public class CategoryServiceImpl implements CategoryService {
     if (categoryRepository.count() == 0) {
       Arrays.stream(CategoryName.values())
           .forEach(categoryName -> this.categoryRepository
-              .save(new CategoryEntity(
-                  categoryName, String.format("Description for %s", categoryName.name()))));
+                  .save(new CategoryEntity(categoryName, String.format("Description for %s", categoryName.name()))));
     }
   }
 
   @Override
   public CategoryEntity find(CategoryName categoryName) {
     return this.categoryRepository
-        .findByCategoryName(categoryName).orElse(null);
+        .findByCategoryName(categoryName)
+        .orElse(null);
   }
 
   @Override

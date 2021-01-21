@@ -59,6 +59,9 @@ dependencies {
     implementation "io.springfox:springfox-swagger2:2.9.2"
     implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 
+    // https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on
+    compile group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.68'
+
     compileOnly "org.webjars:webjars-locator:${webjarsLocatorVersion}"
     compileOnly "org.webjars:jquery:${jQueryVersion}"
     compileOnly "org.webjars:popper.js:${popperJsVersion}"
@@ -66,11 +69,6 @@ dependencies {
 
     implementation "org.mapstruct:mapstruct"
     annotationProcessor "org.mapstruct:mapstruct-processor"
-
-//    compile group: 'org.apache.olingo', name: 'odata-server-api', version: '4.7.1'
-//    compile group: 'org.apache.olingo', name: 'odata-server-core', version: '4.7.1'
-//    compile group: 'org.apache.olingo', name: 'odata-commons-api', version: '4.7.1'
-//    compile group: 'org.apache.olingo', name: 'odata-commons-core', version: '4.7.1'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
